@@ -1,11 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View,FlatList} from 'react-native';
+import React,{useState} from 'react';
+import User from './src/User';
 export default function App() {
+  
+  const[user,setUser]= useState([
+    {id:1,name:'Giovanny', role:'Desenvolvedor'}
+  ])
+  
+  
   return (
+    
+    
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <FlatList
+      data={user}
+      renderItem = {({item})=><User data={item}/>}
+      />
     </View>
   );
 }
@@ -18,3 +28,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
